@@ -21,9 +21,13 @@ def generate_uuid7():
     return f'{hex_str[0:8]}-{hex_str[8:12]}-{hex_str[12:16]}-{hex_str[16:20]}-{hex_str[20:32]}'
 
 class ProfileListCreateView(APIView):
-
     def post(self, request):
-        name = request.data.get('name')
+        import json
+        try:
+            data = json.loads(request.body)
+        except Exception:
+            data = {}
+        name = data.get('name')
 
         # Validation
         if name is None or name == '':
