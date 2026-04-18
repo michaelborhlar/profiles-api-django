@@ -1,3 +1,4 @@
+import json
 import time
 import random
 from django.utils import timezone
@@ -22,7 +23,6 @@ def generate_uuid7():
 
 class ProfileListCreateView(APIView):
     def post(self, request):
-        import json
         try:
             data = json.loads(request.body)
         except Exception:
