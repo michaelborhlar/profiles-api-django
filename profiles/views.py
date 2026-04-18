@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-from uuid_extensions import uuid7str
+from uuid7 import uuid7
 
 from .models import Profile
 from .serializers import ProfileDetailSerializer, ProfileListSerializer
@@ -73,7 +73,7 @@ class ProfileListCreateView(APIView):
             )
 
         profile = Profile.objects.create(
-            id=uuid7str(),
+            id=str(uuid7()),
             name=normalized,
             gender=gender_data['gender'],
             gender_probability=gender_data['gender_probability'],
