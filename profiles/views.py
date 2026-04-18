@@ -1,10 +1,9 @@
+import time
+import random
 from django.utils import timezone
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-
-from uuid7 import uuid7
-
 from .models import Profile
 from .serializers import ProfileDetailSerializer, ProfileListSerializer
 from .services import (
@@ -12,6 +11,14 @@ from .services import (
     classify_age, ExternalAPIError,
 )
 
+
+
+def generate_uuid7():
+    timestamp_ms = int(time.time() * 1000)
+    rand = random.getrandbits(74)
+    uuid_int = (timestamp_ms << 80) | (0x7 << 76) | rand
+    hex_str = f'{uuid_int:032x}'
+    return f'{hex_str[0:8]}-{hex_str[8:12]}-{hex_str[12:16]}-{hex_str[16:20]}-{hex_str[20:32]}'
 
 class ProfileListCreateView(APIView):
 
@@ -73,7 +80,7 @@ class ProfileListCreateView(APIView):
             )
 
         profile = Profile.objects.create(
-            id=str(uuid7()),
+            id=generate_uuid7(),
             name=normalized,
             gender=gender_data['gender'],
             gender_probability=gender_data['gender_probability'],
