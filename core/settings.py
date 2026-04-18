@@ -23,8 +23,24 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOW_HEADERS = ['*']
-CORS_ALLOW_METHODS = ['DELETE', 'GET', 'OPTIONS', 'POST', 'PUT', 'PATCH']
+CORS_ALLOW_CREDENTIALS = False
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'origin',
+    'user-agent',
+    'x-requested-with',
+]
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'POST',
+    'PUT',
+    'PATCH',
+]
 ROOT_URLCONF = 'core.urls'
 
 DATABASES = {
@@ -33,10 +49,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'profiles.db',
     }
 }
-
-
-# CORS
-CORS_ALLOW_ALL_ORIGINS = True
 
 # DRF
 REST_FRAMEWORK = {
