@@ -2,5 +2,5 @@ django>=4.2,<5.0
 djangorestframework>=3.15
 django-cors-headers>=4.3
 requests>=2.31
-uuid-extensions>=0.3
+uuid7>=0.1
 gunicorn>=21.2
