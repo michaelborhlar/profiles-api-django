@@ -51,7 +51,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'profiles.db',
     }
 }
-
+APPEND_SLASH = False
 # DRF
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': ['rest_framework.renderers.JSONRenderer'],
