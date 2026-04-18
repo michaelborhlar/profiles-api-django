@@ -41,6 +41,8 @@ CORS_ALLOW_METHODS = [
     'PUT',
     'PATCH',
 ]
+CORS_URLS_REGEX = r'^.*$'
+CORS_EXPOSE_HEADERS = ['*']
 ROOT_URLCONF = 'core.urls'
 
 DATABASES = {
